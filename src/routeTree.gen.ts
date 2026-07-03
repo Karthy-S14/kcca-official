@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 import { Route as TrainingRouteImport } from './routes/training'
 import { Route as TournamentRouteImport } from './routes/tournament'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RatedPlayersRouteImport } from './routes/rated-players'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as MembersRouteImport } from './routes/members'
@@ -19,6 +20,7 @@ import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CommitteeRouteImport } from './routes/committee'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -36,6 +38,11 @@ const TrainingRoute = TrainingRouteImport.update({
 const TournamentRoute = TournamentRouteImport.update({
   id: '/tournament',
   path: '/tournament',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RatedPlayersRoute = RatedPlayersRouteImport.update({
@@ -73,6 +80,11 @@ const CommitteeRoute = CommitteeRouteImport.update({
   path: '/committee',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AchievementsRoute = AchievementsRouteImport.update({
   id: '/achievements',
   path: '/achievements',
@@ -93,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/auth': typeof AuthRoute
   '/committee': typeof CommitteeRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
@@ -100,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/members': typeof MembersRoute
   '/news': typeof NewsRoute
   '/rated-players': typeof RatedPlayersRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/tournament': typeof TournamentRoute
   '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -108,6 +122,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/auth': typeof AuthRoute
   '/committee': typeof CommitteeRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
@@ -115,6 +130,7 @@ export interface FileRoutesByTo {
   '/members': typeof MembersRoute
   '/news': typeof NewsRoute
   '/rated-players': typeof RatedPlayersRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/tournament': typeof TournamentRoute
   '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -124,6 +140,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/auth': typeof AuthRoute
   '/committee': typeof CommitteeRoute
   '/contact': typeof ContactRoute
   '/downloads': typeof DownloadsRoute
@@ -131,6 +148,7 @@ export interface FileRoutesById {
   '/members': typeof MembersRoute
   '/news': typeof NewsRoute
   '/rated-players': typeof RatedPlayersRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/tournament': typeof TournamentRoute
   '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -141,6 +159,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/achievements'
+    | '/auth'
     | '/committee'
     | '/contact'
     | '/downloads'
@@ -148,6 +167,7 @@ export interface FileRouteTypes {
     | '/members'
     | '/news'
     | '/rated-players'
+    | '/reset-password'
     | '/tournament'
     | '/training'
     | '/vision-mission'
@@ -156,6 +176,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/achievements'
+    | '/auth'
     | '/committee'
     | '/contact'
     | '/downloads'
@@ -163,6 +184,7 @@ export interface FileRouteTypes {
     | '/members'
     | '/news'
     | '/rated-players'
+    | '/reset-password'
     | '/tournament'
     | '/training'
     | '/vision-mission'
@@ -171,6 +193,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/achievements'
+    | '/auth'
     | '/committee'
     | '/contact'
     | '/downloads'
@@ -178,6 +201,7 @@ export interface FileRouteTypes {
     | '/members'
     | '/news'
     | '/rated-players'
+    | '/reset-password'
     | '/tournament'
     | '/training'
     | '/vision-mission'
@@ -187,6 +211,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AchievementsRoute: typeof AchievementsRoute
+  AuthRoute: typeof AuthRoute
   CommitteeRoute: typeof CommitteeRoute
   ContactRoute: typeof ContactRoute
   DownloadsRoute: typeof DownloadsRoute
@@ -194,6 +219,7 @@ export interface RootRouteChildren {
   MembersRoute: typeof MembersRoute
   NewsRoute: typeof NewsRoute
   RatedPlayersRoute: typeof RatedPlayersRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   TournamentRoute: typeof TournamentRoute
   TrainingRoute: typeof TrainingRoute
   VisionMissionRoute: typeof VisionMissionRoute
@@ -220,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: '/tournament'
       fullPath: '/tournament'
       preLoaderRoute: typeof TournamentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rated-players': {
@@ -271,6 +304,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CommitteeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/achievements': {
       id: '/achievements'
       path: '/achievements'
@@ -299,6 +339,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AchievementsRoute: AchievementsRoute,
+  AuthRoute: AuthRoute,
   CommitteeRoute: CommitteeRoute,
   ContactRoute: ContactRoute,
   DownloadsRoute: DownloadsRoute,
@@ -306,6 +347,7 @@ const rootRouteChildren: RootRouteChildren = {
   MembersRoute: MembersRoute,
   NewsRoute: NewsRoute,
   RatedPlayersRoute: RatedPlayersRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   TournamentRoute: TournamentRoute,
   TrainingRoute: TrainingRoute,
   VisionMissionRoute: VisionMissionRoute,
