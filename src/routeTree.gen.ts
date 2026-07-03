@@ -26,6 +26,7 @@ import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminResourceRouteImport } from './routes/admin.$resource'
 
 const VisionMissionRoute = VisionMissionRouteImport.update({
   id: '/vision-mission',
@@ -112,6 +113,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminResourceRoute = AdminResourceRouteImport.update({
+  id: '/$resource',
+  path: '/$resource',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/tournament': typeof TournamentRoute
   '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/admin/$resource': typeof AdminResourceRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -148,6 +155,7 @@ export interface FileRoutesByTo {
   '/tournament': typeof TournamentRoute
   '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/admin/$resource': typeof AdminResourceRoute
   '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/tournament': typeof TournamentRoute
   '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
+  '/admin/$resource': typeof AdminResourceRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -189,6 +198,7 @@ export interface FileRouteTypes {
     | '/tournament'
     | '/training'
     | '/vision-mission'
+    | '/admin/$resource'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/tournament'
     | '/training'
     | '/vision-mission'
+    | '/admin/$resource'
     | '/admin'
   id:
     | '__root__'
@@ -226,6 +237,7 @@ export interface FileRouteTypes {
     | '/tournament'
     | '/training'
     | '/vision-mission'
+    | '/admin/$resource'
     | '/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -369,14 +381,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/$resource': {
+      id: '/admin/$resource'
+      path: '/$resource'
+      fullPath: '/admin/$resource'
+      preLoaderRoute: typeof AdminResourceRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
+  AdminResourceRoute: typeof AdminResourceRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminResourceRoute: AdminResourceRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
