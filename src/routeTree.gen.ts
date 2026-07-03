@@ -10,7 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
+import { Route as TrainingRouteImport } from './routes/training'
 import { Route as TournamentRouteImport } from './routes/tournament'
+import { Route as RatedPlayersRouteImport } from './routes/rated-players'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as MembersRouteImport } from './routes/members'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as DownloadsRouteImport } from './routes/downloads'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CommitteeRouteImport } from './routes/committee'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,9 +28,49 @@ const VisionMissionRoute = VisionMissionRouteImport.update({
   path: '/vision-mission',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainingRoute = TrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TournamentRoute = TournamentRouteImport.update({
   id: '/tournament',
   path: '/tournament',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RatedPlayersRoute = RatedPlayersRouteImport.update({
+  id: '/rated-players',
+  path: '/rated-players',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembersRoute = MembersRouteImport.update({
+  id: '/members',
+  path: '/members',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DownloadsRoute = DownloadsRouteImport.update({
+  id: '/downloads',
+  path: '/downloads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommitteeRoute = CommitteeRouteImport.update({
+  id: '/committee',
+  path: '/committee',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AchievementsRoute = AchievementsRouteImport.update({
@@ -45,14 +93,30 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/committee': typeof CommitteeRoute
+  '/contact': typeof ContactRoute
+  '/downloads': typeof DownloadsRoute
+  '/gallery': typeof GalleryRoute
+  '/members': typeof MembersRoute
+  '/news': typeof NewsRoute
+  '/rated-players': typeof RatedPlayersRoute
   '/tournament': typeof TournamentRoute
+  '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/committee': typeof CommitteeRoute
+  '/contact': typeof ContactRoute
+  '/downloads': typeof DownloadsRoute
+  '/gallery': typeof GalleryRoute
+  '/members': typeof MembersRoute
+  '/news': typeof NewsRoute
+  '/rated-players': typeof RatedPlayersRoute
   '/tournament': typeof TournamentRoute
+  '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRoutesById {
@@ -60,7 +124,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/committee': typeof CommitteeRoute
+  '/contact': typeof ContactRoute
+  '/downloads': typeof DownloadsRoute
+  '/gallery': typeof GalleryRoute
+  '/members': typeof MembersRoute
+  '/news': typeof NewsRoute
+  '/rated-players': typeof RatedPlayersRoute
   '/tournament': typeof TournamentRoute
+  '/training': typeof TrainingRoute
   '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRouteTypes {
@@ -69,16 +141,45 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/achievements'
+    | '/committee'
+    | '/contact'
+    | '/downloads'
+    | '/gallery'
+    | '/members'
+    | '/news'
+    | '/rated-players'
     | '/tournament'
+    | '/training'
     | '/vision-mission'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/achievements' | '/tournament' | '/vision-mission'
+  to:
+    | '/'
+    | '/about'
+    | '/achievements'
+    | '/committee'
+    | '/contact'
+    | '/downloads'
+    | '/gallery'
+    | '/members'
+    | '/news'
+    | '/rated-players'
+    | '/tournament'
+    | '/training'
+    | '/vision-mission'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/achievements'
+    | '/committee'
+    | '/contact'
+    | '/downloads'
+    | '/gallery'
+    | '/members'
+    | '/news'
+    | '/rated-players'
     | '/tournament'
+    | '/training'
     | '/vision-mission'
   fileRoutesById: FileRoutesById
 }
@@ -86,7 +187,15 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AchievementsRoute: typeof AchievementsRoute
+  CommitteeRoute: typeof CommitteeRoute
+  ContactRoute: typeof ContactRoute
+  DownloadsRoute: typeof DownloadsRoute
+  GalleryRoute: typeof GalleryRoute
+  MembersRoute: typeof MembersRoute
+  NewsRoute: typeof NewsRoute
+  RatedPlayersRoute: typeof RatedPlayersRoute
   TournamentRoute: typeof TournamentRoute
+  TrainingRoute: typeof TrainingRoute
   VisionMissionRoute: typeof VisionMissionRoute
 }
 
@@ -99,11 +208,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisionMissionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/training': {
+      id: '/training'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tournament': {
       id: '/tournament'
       path: '/tournament'
       fullPath: '/tournament'
       preLoaderRoute: typeof TournamentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rated-players': {
+      id: '/rated-players'
+      path: '/rated-players'
+      fullPath: '/rated-players'
+      preLoaderRoute: typeof RatedPlayersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/members': {
+      id: '/members'
+      path: '/members'
+      fullPath: '/members'
+      preLoaderRoute: typeof MembersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/downloads': {
+      id: '/downloads'
+      path: '/downloads'
+      fullPath: '/downloads'
+      preLoaderRoute: typeof DownloadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/committee': {
+      id: '/committee'
+      path: '/committee'
+      fullPath: '/committee'
+      preLoaderRoute: typeof CommitteeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/achievements': {
@@ -134,7 +299,15 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AchievementsRoute: AchievementsRoute,
+  CommitteeRoute: CommitteeRoute,
+  ContactRoute: ContactRoute,
+  DownloadsRoute: DownloadsRoute,
+  GalleryRoute: GalleryRoute,
+  MembersRoute: MembersRoute,
+  NewsRoute: NewsRoute,
+  RatedPlayersRoute: RatedPlayersRoute,
   TournamentRoute: TournamentRoute,
+  TrainingRoute: TrainingRoute,
   VisionMissionRoute: VisionMissionRoute,
 }
 export const routeTree = rootRouteImport
