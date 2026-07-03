@@ -14,16 +14,515 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      achievements: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          event_date: string | null
+          id: string
+          image_url: string | null
+          merit_awardees: string[] | null
+          runners_up: string[] | null
+          title: string
+          updated_at: string
+          winner: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          event_date?: string | null
+          id?: string
+          image_url?: string | null
+          merit_awardees?: string[] | null
+          runners_up?: string[] | null
+          title: string
+          updated_at?: string
+          winner?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          event_date?: string | null
+          id?: string
+          image_url?: string | null
+          merit_awardees?: string[] | null
+          runners_up?: string[] | null
+          title?: string
+          updated_at?: string
+          winner?: string | null
+        }
+        Relationships: []
+      }
+      committee: {
+        Row: {
+          bio: string | null
+          created_at: string
+          id: string
+          name: string
+          photo_url: string | null
+          role: string
+          sort_order: number | null
+          updated_at: string
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          photo_url?: string | null
+          role: string
+          sort_order?: number | null
+          updated_at?: string
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          photo_url?: string | null
+          role?: string
+          sort_order?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contacts: {
+        Row: {
+          created_at: string
+          email: string
+          handled: boolean | null
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          handled?: boolean | null
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          handled?: boolean | null
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      downloads: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          file_size: string | null
+          file_url: string
+          id: string
+          title: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          file_size?: string | null
+          file_url: string
+          id?: string
+          title: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          file_size?: string | null
+          file_url?: string
+          id?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      gallery: {
+        Row: {
+          caption: string | null
+          category: string | null
+          created_at: string
+          event_date: string | null
+          id: string
+          image_url: string
+          title: string | null
+        }
+        Insert: {
+          caption?: string | null
+          category?: string | null
+          created_at?: string
+          event_date?: string | null
+          id?: string
+          image_url: string
+          title?: string | null
+        }
+        Update: {
+          caption?: string | null
+          category?: string | null
+          created_at?: string
+          event_date?: string | null
+          id?: string
+          image_url?: string
+          title?: string | null
+        }
+        Relationships: []
+      }
+      members: {
+        Row: {
+          achievements: string | null
+          age: number | null
+          created_at: string
+          grade: string | null
+          id: string
+          joined_date: string | null
+          name: string
+          photo_url: string | null
+          rating: number | null
+          school: string | null
+          updated_at: string
+        }
+        Insert: {
+          achievements?: string | null
+          age?: number | null
+          created_at?: string
+          grade?: string | null
+          id?: string
+          joined_date?: string | null
+          name: string
+          photo_url?: string | null
+          rating?: number | null
+          school?: string | null
+          updated_at?: string
+        }
+        Update: {
+          achievements?: string | null
+          age?: number | null
+          created_at?: string
+          grade?: string | null
+          id?: string
+          joined_date?: string | null
+          name?: string
+          photo_url?: string | null
+          rating?: number | null
+          school?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      news: {
+        Row: {
+          body: string | null
+          created_at: string
+          excerpt: string | null
+          id: string
+          image_url: string | null
+          pinned: boolean | null
+          published_at: string | null
+          slug: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          pinned?: boolean | null
+          published_at?: string | null
+          slug?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          pinned?: boolean | null
+          published_at?: string | null
+          slug?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      rated_players: {
+        Row: {
+          age: number | null
+          blitz_rating: number | null
+          club: string | null
+          country: string | null
+          created_at: string
+          current_rank: number | null
+          federation: string | null
+          fide_id: string | null
+          grade: string | null
+          id: string
+          joined_date: string | null
+          name: string
+          photo_url: string | null
+          rapid_rating: number | null
+          school: string | null
+          standard_rating: number | null
+          status: string | null
+          title: string | null
+          total_games: number | null
+          tournament_count: number | null
+          updated_at: string
+        }
+        Insert: {
+          age?: number | null
+          blitz_rating?: number | null
+          club?: string | null
+          country?: string | null
+          created_at?: string
+          current_rank?: number | null
+          federation?: string | null
+          fide_id?: string | null
+          grade?: string | null
+          id?: string
+          joined_date?: string | null
+          name: string
+          photo_url?: string | null
+          rapid_rating?: number | null
+          school?: string | null
+          standard_rating?: number | null
+          status?: string | null
+          title?: string | null
+          total_games?: number | null
+          tournament_count?: number | null
+          updated_at?: string
+        }
+        Update: {
+          age?: number | null
+          blitz_rating?: number | null
+          club?: string | null
+          country?: string | null
+          created_at?: string
+          current_rank?: number | null
+          federation?: string | null
+          fide_id?: string | null
+          grade?: string | null
+          id?: string
+          joined_date?: string | null
+          name?: string
+          photo_url?: string | null
+          rapid_rating?: number | null
+          school?: string | null
+          standard_rating?: number | null
+          status?: string | null
+          title?: string | null
+          total_games?: number | null
+          tournament_count?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value?: Json
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
+      tournament_results: {
+        Row: {
+          category: string | null
+          created_at: string
+          id: string
+          player_name: string
+          points: number | null
+          position: number | null
+          tournament_id: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          id?: string
+          player_name: string
+          points?: number | null
+          position?: number | null
+          tournament_id?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          id?: string
+          player_name?: string
+          points?: number | null
+          position?: number | null
+          tournament_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tournament_results_tournament_id_fkey"
+            columns: ["tournament_id"]
+            isOneToOne: false
+            referencedRelation: "tournaments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tournaments: {
+        Row: {
+          created_at: string
+          description: string | null
+          entry_fee: string | null
+          event_date: string | null
+          grade: string | null
+          id: string
+          name: string
+          pairing: string | null
+          poster_url: string | null
+          registration_open: boolean | null
+          rules: string | null
+          status: string | null
+          system: string | null
+          tie_breaks: string | null
+          time_info: string | null
+          updated_at: string
+          venue: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          entry_fee?: string | null
+          event_date?: string | null
+          grade?: string | null
+          id?: string
+          name: string
+          pairing?: string | null
+          poster_url?: string | null
+          registration_open?: boolean | null
+          rules?: string | null
+          status?: string | null
+          system?: string | null
+          tie_breaks?: string | null
+          time_info?: string | null
+          updated_at?: string
+          venue?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          entry_fee?: string | null
+          event_date?: string | null
+          grade?: string | null
+          id?: string
+          name?: string
+          pairing?: string | null
+          poster_url?: string | null
+          registration_open?: boolean | null
+          rules?: string | null
+          status?: string | null
+          system?: string | null
+          tie_breaks?: string | null
+          time_info?: string | null
+          updated_at?: string
+          venue?: string | null
+        }
+        Relationships: []
+      }
+      training: {
+        Row: {
+          category: string | null
+          content: string | null
+          created_at: string
+          description: string | null
+          id: string
+          schedule_date: string | null
+          title: string
+          updated_at: string
+          video_url: string | null
+        }
+        Insert: {
+          category?: string | null
+          content?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          schedule_date?: string | null
+          title: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Update: {
+          category?: string | null
+          content?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          schedule_date?: string | null
+          title?: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +649,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
