@@ -99,6 +99,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "KCCA — Kilinochchi Central Chess Association" },
+      { name: "description", content: "KCCA Chess Premier is a professional chess association website and management system." },
+      { property: "og:description", content: "KCCA Chess Premier is a professional chess association website and management system." },
+      { name: "twitter:description", content: "KCCA Chess Premier is a professional chess association website and management system." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0fc098a5-7687-481c-ac44-97e3cb59dbdf/id-preview-3c566b5c--a12ba9a5-7f30-4d84-9eb2-934d6b7ea600.lovable.app-1783085080392.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0fc098a5-7687-481c-ac44-97e3cb59dbdf/id-preview-3c566b5c--a12ba9a5-7f30-4d84-9eb2-934d6b7ea600.lovable.app-1783085080392.png" },
     ],
     links: [
       {
