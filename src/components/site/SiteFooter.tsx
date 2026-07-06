@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 import { Logo } from "./Logo";
 import { SITE, NAV } from "@/lib/site-config";
+import { CreatorCard } from "./CreatorCard";
 
 export function SiteFooter() {
   return (
@@ -51,6 +52,11 @@ export function SiteFooter() {
               <span>{SITE.address}</span>
             </li>
           </ul>
+        </div>
+      </div>
+      <div className="border-t border-[oklch(0.82_0.14_84/0.15)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6">
+          <CreatorCard />
         </div>
       </div>
       <div className="border-t border-[oklch(0.82_0.14_84/0.15)]">
