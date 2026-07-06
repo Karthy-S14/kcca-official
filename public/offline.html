@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offline — KCCA</title>
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="/kcca-logo.png" type="image/png" />
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; }
+      body {
+        font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        background:
+          radial-gradient(ellipse at 20% -10%, rgba(212, 175, 55, 0.08), transparent 60%),
+          radial-gradient(ellipse at 80% 110%, rgba(212, 175, 55, 0.06), transparent 55%),
+          #0a0a0a;
+        color: #f5f2ea;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+      .card {
+        max-width: 480px;
+        text-align: center;
+        padding: 2.5rem 2rem;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        border-radius: 1.25rem;
+        background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(212, 175, 55, 0.05));
+        backdrop-filter: blur(20px) saturate(140%);
+        box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6);
+      }
+      img { width: 72px; height: 72px; margin: 0 auto 1rem; display: block; border-radius: 12px; }
+      h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 2rem; margin: 0 0 0.5rem;
+        background: linear-gradient(135deg, #f2d98a, #b98d3a 50%, #f2d98a);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      p { color: rgba(245, 242, 234, 0.7); line-height: 1.6; margin: 0 0 1.5rem; font-size: 0.95rem; }
+      .eyebrow { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: #d4af37; margin-bottom: 0.5rem; }
+      button {
+        cursor: pointer;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        background: linear-gradient(135deg, #e8c76d, #b98d3a);
+        color: #0a0a0a;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        padding: 0.7rem 1.4rem;
+        border-radius: 0.75rem;
+        font-size: 0.9rem;
+      }
+      button:hover { filter: brightness(1.05); }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <img src="/kcca-logo.png" alt="KCCA" />
+      <div class="eyebrow">Connection Lost</div>
+      <h1>You're Offline</h1>
+      <p>
+        We can't reach the KCCA servers right now. Check your connection and try again — cached pages will still open from your device.
+      </p>
+      <button onclick="location.reload()">Try Again</button>
+    </main>
+  </body>
+</html>
