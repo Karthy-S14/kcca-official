@@ -15,6 +15,8 @@ import { Toaster } from "sonner";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { BackToTop } from "@/components/site/BackToTop";
+import { InstallPrompt } from "@/components/site/InstallPrompt";
+import { registerPWA } from "@/lib/pwa";
 import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
@@ -105,6 +107,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "KCCA Chess Premier is a professional chess association website and management system." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0fc098a5-7687-481c-ac44-97e3cb59dbdf/id-preview-3c566b5c--a12ba9a5-7f30-4d84-9eb2-934d6b7ea600.lovable.app-1783085080392.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0fc098a5-7687-481c-ac44-97e3cb59dbdf/id-preview-3c566b5c--a12ba9a5-7f30-4d84-9eb2-934d6b7ea600.lovable.app-1783085080392.png" },
+      { name: "application-name", content: "KCCA Chess" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "KCCA Chess" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "msapplication-TileColor", content: "#0a0a0a" },
     ],
     links: [
       {
@@ -112,6 +120,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/kcca-logo.png", type: "image/png", sizes: "512x512" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "512x512" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
     ],
   }),
   shellComponent: RootShell,
@@ -146,6 +157,10 @@ function RootComponent() {
     return () => sub.subscription.unsubscribe();
   }, [router, queryClient]);
 
+  useEffect(() => {
+    registerPWA();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen flex flex-col">
@@ -155,6 +170,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <BackToTop />
+        <InstallPrompt />
       </div>
       <Toaster
         theme="dark"
