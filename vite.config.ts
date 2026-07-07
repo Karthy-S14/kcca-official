@@ -20,7 +20,14 @@ export default defineConfig({
         injectRegister: null,
         strategies: "generateSW",
         filename: "sw.js",
-        includeAssets: ["favicon.ico", "kcca-logo.png", "apple-touch-icon.png", "offline.html"],
+        includeAssets: [
+          "favicon.ico",
+          "kcca-logo.png",
+          "kcca-logo-192.png",
+          "kcca-maskable-512.png",
+          "apple-touch-icon.png",
+          "offline.html",
+        ],
         manifest: {
           name: "KCCA — Kilinochchi Central Chess Association",
           short_name: "KCCA Chess",
@@ -35,9 +42,9 @@ export default defineConfig({
           lang: "en",
           categories: ["sports", "education", "games"],
           icons: [
-            { src: "/kcca-logo.png", sizes: "192x192", type: "image/png", purpose: "any" },
+            { src: "/kcca-logo-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
             { src: "/kcca-logo.png", sizes: "512x512", type: "image/png", purpose: "any" },
-            { src: "/kcca-logo.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+            { src: "/kcca-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
           ],
         },
         workbox: {
