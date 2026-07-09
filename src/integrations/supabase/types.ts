@@ -56,6 +56,83 @@ export type Database = {
         }
         Relationships: []
       }
+      activity_logs: {
+        Row: {
+          action: string
+          actor_id: string | null
+          created_at: string
+          entity: string | null
+          entity_id: string | null
+          id: string
+          metadata: Json
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          created_at?: string
+          entity?: string | null
+          entity_id?: string | null
+          id?: string
+          metadata?: Json
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          created_at?: string
+          entity?: string | null
+          entity_id?: string | null
+          id?: string
+          metadata?: Json
+        }
+        Relationships: []
+      }
+      attendance: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          member_id: string | null
+          method: string
+          note: string | null
+          present: boolean
+          session: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          date?: string
+          id?: string
+          member_id?: string | null
+          method?: string
+          note?: string | null
+          present?: boolean
+          session?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          member_id?: string | null
+          method?: string
+          note?: string | null
+          present?: boolean
+          session?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "attendance_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       committee: {
         Row: {
           bio: string | null
@@ -259,6 +336,87 @@ export type Database = {
           published_at?: string | null
           slug?: string | null
           title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          body: string | null
+          created_at: string
+          id: string
+          is_read: boolean
+          link: string | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          is_read?: boolean
+          link?: string | null
+          title: string
+          type?: string
+          user_id: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          is_read?: boolean
+          link?: string | null
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          avatar_url: string | null
+          created_at: string
+          date_of_birth: string | null
+          full_name: string | null
+          gender: string | null
+          id: string
+          joined_date: string
+          membership_id: string | null
+          phone: string | null
+          school: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          full_name?: string | null
+          gender?: string | null
+          id: string
+          joined_date?: string
+          membership_id?: string | null
+          phone?: string | null
+          school?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          full_name?: string | null
+          gender?: string | null
+          id?: string
+          joined_date?: string
+          membership_id?: string | null
+          phone?: string | null
+          school?: string | null
+          status?: string
           updated_at?: string
         }
         Relationships: []
@@ -522,7 +680,23 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      app_role:
+        | "admin"
+        | "moderator"
+        | "user"
+        | "president"
+        | "vice_president"
+        | "secretary"
+        | "treasurer"
+        | "committee_member"
+        | "chief_arbiter"
+        | "deputy_chief_arbiter"
+        | "arbiter"
+        | "coach"
+        | "media_team"
+        | "student"
+        | "parent"
+        | "guest"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -650,7 +824,24 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "moderator", "user"],
+      app_role: [
+        "admin",
+        "moderator",
+        "user",
+        "president",
+        "vice_president",
+        "secretary",
+        "treasurer",
+        "committee_member",
+        "chief_arbiter",
+        "deputy_chief_arbiter",
+        "arbiter",
+        "coach",
+        "media_team",
+        "student",
+        "parent",
+        "guest",
+      ],
     },
   },
 } as const
